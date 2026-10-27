@@ -53,6 +53,8 @@
 
 ## Quick Start
 
+Requires Node.js **22.12 or later** and pnpm **10.8.0**.
+
 ### Get the Project Code
 
 ```bash

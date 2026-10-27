@@ -45,18 +45,43 @@ export default defineConfig(({ mode }) => {
 
 		build: {
 			target: "esnext",
-			minify: "esbuild",
+			minify: "oxc",
 			sourcemap: !isProduction,
 			cssCodeSplit: true,
 			chunkSizeWarningLimit: 1500,
-			rollupOptions: {
+			rolldownOptions: {
 				output: {
-					manualChunks: {
-						"vendor-core": ["react", "react-dom", "react-router"],
-						"vendor-ui": ["antd", "@ant-design/cssinjs", "styled-components"],
-						"vendor-utils": ["axios", "dayjs", "i18next", "zustand", "@iconify/react"],
-						"vendor-charts": ["apexcharts", "react-apexcharts"],
+					codeSplitting: {
+						groups: [
+							{
+								name: "vendor-core",
+								test: /[\\/]node_modules[\\/](?:react|react-dom|react-router)(?:[\\/]|$)/,
+								priority: 40,
+							},
+							{
+								name: "vendor-ui",
+								test: /[\\/]node_modules[\\/](?:antd|@ant-design[\\/]cssinjs|styled-components)(?:[\\/]|$)/,
+								priority: 30,
+							},
+							{
+								name: "vendor-utils",
+								test: /[\\/]node_modules[\\/](?:axios|dayjs|i18next|zustand|@iconify[\\/]react)(?:[\\/]|$)/,
+								priority: 20,
+							},
+							{
+								name: "vendor-charts",
+								test: /[\\/]node_modules[\\/](?:apexcharts|react-apexcharts)(?:[\\/]|$)/,
+								priority: 10,
+							},
+						],
 					},
+					minify: {
+						compress: {
+							dropConsole: isProduction,
+							dropDebugger: isProduction,
+						},
+					},
+					comments: { legal: false },
 				},
 			},
 		},
@@ -66,9 +91,7 @@ export default defineConfig(({ mode }) => {
 			exclude: ["@iconify/react"],
 		},
 
-		esbuild: {
-			drop: isProduction ? ["console", "debugger"] : [],
-			legalComments: "none",
+		oxc: {
 			target: "esnext",
 		},
 	};

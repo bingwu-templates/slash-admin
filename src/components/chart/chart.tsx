@@ -1,7 +1,9 @@
-import ApexChart from "react-apexcharts";
+import type { Props as ApexChartProps } from "react-apexcharts";
+import ReactApexChart from "react-apexcharts";
 import { chartWrapper } from "./styles.css";
 
-import type { Props as ApexChartProps } from "react-apexcharts";
+// Older CommonJS releases expose the component under `default` in Vite 8.
+const ApexChart = "default" in ReactApexChart ? (ReactApexChart.default as typeof ReactApexChart) : ReactApexChart;
 
 export function Chart(props: ApexChartProps) {
 	return (
