@@ -1,6 +1,6 @@
 import Character from "@/assets/images/characters/character_6.png";
-import { themeVars } from "@/theme/theme.css";
 import ErrorLayout from "./components/ErrorLayout";
+import { themeVars } from "@/theme/theme.css";
 
 export default function Page500() {
 	const svg = (

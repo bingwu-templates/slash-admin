@@ -1,9 +1,9 @@
-import { up, useMediaQuery } from "@/hooks";
-import { useSettings } from "@/store/settingStore";
-import { themeVars } from "@/theme/theme.css";
-import { rgbAlpha } from "@/utils/theme";
 import { type CSSProperties, useMemo } from "react";
 import { ThemeLayout } from "#/enum";
+import { up, useMediaQuery } from "@/hooks";
+import { useSettings } from "@/store/settingStore";
+import { rgbAlpha } from "@/utils/theme";
+import { themeVars } from "@/theme/theme.css";
 
 export function useMultiTabsStyle() {
 	const { themeLayout } = useSettings();

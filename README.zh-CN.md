@@ -21,20 +21,22 @@
 
 **中文** | [English](./README.md)
 
-## 赞助 
+## 赞助
+
 <div style="display: flex; gap: 50px"> 
   <img style="width:300px" src="https://d3george.github.io/github-static/pay/weixin.jpg" >
   <img style="width:300px" src="https://d3george.github.io/github-static/pay/buymeacoffee.png" />
 </div>
 
-
 ## 预览
-+ https://admin.slashspaces.com/
 
-|![login.png](https://d3george.github.io/github-static/slash-admin/sa-web-light.jpeg)|![login_dark.png](https://d3george.github.io/github-static/slash-admin/sa-web-dark.jpeg)
-| ----------------------------------------------------------------- | ------------------------------------------------------------------- |
-|![analysis.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-light.jpeg)|![workbench.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-dark.jpeg)
-| | 
+- https://admin.slashspaces.com/
+
+| ![login.png](https://d3george.github.io/github-static/slash-admin/sa-web-light.jpeg)       | ![login_dark.png](https://d3george.github.io/github-static/slash-admin/sa-web-dark.jpeg)   |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| ![analysis.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-light.jpeg) | ![workbench.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-dark.jpeg) |
+|                                                                                            |
+
 ## 特性
 
 - 使用 React 19 hooks 进行构建。
@@ -53,7 +55,7 @@
 
 ## 快速开始
 
-需要 Node.js **22.12 及以上版本**和 pnpm **10.8.0**。
+需要 Node.js **22.18.0 及以上版本**和 pnpm **10.8.0**。TypeScript lint 配置依赖 Node.js 原生类型擦除能力。
 
 ### 获取项目代码
 
@@ -86,6 +88,27 @@ pnpm dev
 ```bash
 pnpm build
 ```
+
+## 代码质量
+
+Oxfmt 和 Oxlint 分别使用 `oxfmt.config.ts`、`oxlint.config.ts`，通过对应包的 `defineConfig` 提供类型提示。两个配置文件均纳入 `pnpm typecheck`。
+
+| 命令                | 用途                             |
+| ------------------- | -------------------------------- |
+| `pnpm format`       | 格式化支持的项目文件并排序导入   |
+| `pnpm format:check` | 只检查格式，不写入文件           |
+| `pnpm lint`         | 运行 Oxlint 默认规则             |
+| `pnpm lint:fix`     | 应用安全的 lint 自动修复         |
+| `pnpm typecheck`    | 运行 TypeScript 检查，不生成文件 |
+| `pnpm check`        | 依次运行格式、lint 和类型检查    |
+
+格式保留 Tab 缩进（宽度 2）、120 列、双引号、分号及 LF 换行。导入排序保留副作用导入顺序，不额外插入分组空行；关闭 `package.json` 字段自动排序。两套工具均遵循 `.gitignore`，并排除 `public`、`.vscode` 和 `src/ui`。
+
+Lefthook 按格式化、lint、类型检查的顺序处理暂存文件，并将格式修复重新暂存。VS Code 推荐安装 **Oxc** 扩展（`oxc.oxc-vscode`），保存时格式化并应用安全的 lint 修复。
+
+### 检查范围
+
+Oxlint 使用默认规则及其默认严重级别，不额外启用插件、类型感知规则或覆盖单条规则。CSS、JSON 和 GraphQL 仅由 Oxfmt 格式化，不进行 lint 检查。TypeScript 类型检查由 `pnpm typecheck` 执行。
 
 ## Git贡献提交规范
 

@@ -1,7 +1,7 @@
-import { Avatar, AvatarFallback } from "@/ui/avatar";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/ui/tooltip";
 import * as React from "react";
 import type { CSSProperties } from "react";
+import { Avatar, AvatarFallback } from "@/ui/avatar";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/ui/tooltip";
 
 interface AvatarGroupProps {
 	children: React.ReactNode;
@@ -60,9 +60,8 @@ export function AvatarGroup({ children, max, size }: AvatarGroupProps) {
 
 	return (
 		<div className="flex -space-x-3">
-			{displayAvatars.map((child, idx) => (
-				// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-				<div key={idx}>{cloneAvatarWithSize(child)}</div>
+			{React.Children.map(displayAvatars, (child) => (
+				<div>{cloneAvatarWithSize(child)}</div>
 			))}
 			{extra > 0 && (
 				<Tooltip>
@@ -75,9 +74,8 @@ export function AvatarGroup({ children, max, size }: AvatarGroupProps) {
 					</TooltipTrigger>
 					<TooltipContent>
 						<div className="flex gap-1">
-							{extraAvatars.map((child, idx) => (
-								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-								<div key={idx}>{cloneAvatarWithSize(child)}</div>
+							{React.Children.map(extraAvatars, (child) => (
+								<div>{cloneAvatarWithSize(child)}</div>
 							))}
 						</div>
 					</TooltipContent>

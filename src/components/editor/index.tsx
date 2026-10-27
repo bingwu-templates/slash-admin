@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 import "@/utils/highlight";
 import ReactQuill, { type ReactQuillProps } from "react-quill";
 import { StyledEditor } from "./styles";

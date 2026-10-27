@@ -1,7 +1,3 @@
-import { Icon } from "@/components/icon";
-import { Button } from "@/ui/button";
-import { Input } from "@/ui/input";
-import { ScrollArea, ScrollBar } from "@/ui/scroll-area";
 import {
 	DndContext,
 	type DragEndEvent,
@@ -15,6 +11,10 @@ import { SortableContext, arrayMove, horizontalListSortingStrategy } from "@dnd-
 import { faker } from "@faker-js/faker";
 import { useRef, useState } from "react";
 import { useEvent } from "react-use";
+import { Icon } from "@/components/icon";
+import { Button } from "@/ui/button";
+import { Input } from "@/ui/input";
+import { ScrollArea, ScrollBar } from "@/ui/scroll-area";
 import KanbanColumn from "./kanban-column";
 import KanbanTask from "./kanban-task";
 import { initialData } from "./task-utils";

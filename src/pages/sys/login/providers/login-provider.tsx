@@ -1,4 +1,4 @@
-import { type PropsWithChildren, createContext, useContext, useMemo, useState } from "react";
+import { type PropsWithChildren, createContext, useCallback, useContext, useMemo, useState } from "react";
 
 export enum LoginStateEnum {
 	LOGIN = 0,
@@ -27,12 +27,13 @@ export function useLoginStateContext() {
 export function LoginProvider({ children }: PropsWithChildren) {
 	const [loginState, setLoginState] = useState(LoginStateEnum.LOGIN);
 
-	function backToLogin() {
+	const backToLogin = useCallback(() => {
 		setLoginState(LoginStateEnum.LOGIN);
-	}
-
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-	const value: LoginStateContextType = useMemo(() => ({ loginState, setLoginState, backToLogin }), [loginState]);
+	}, []);
+	const value: LoginStateContextType = useMemo(
+		() => ({ loginState, setLoginState, backToLogin }),
+		[loginState, backToLogin],
+	);
 
 	return <LoginStateContext.Provider value={value}>{children}</LoginStateContext.Provider>;
 }

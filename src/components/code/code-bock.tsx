@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/ui/collapsible";
 import { cn } from "@/utils";
-import { useState } from "react";
 import { type CodeBlockProps, HighlightCode } from ".";
 import { Icon } from "../icon";
 

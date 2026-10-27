@@ -1,10 +1,3 @@
-import { Icon } from "@/components/icon";
-import { Button } from "@/ui/button";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/ui/dialog";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/ui/form";
-import { Input } from "@/ui/input";
-import { Switch } from "@/ui/switch";
-import { Textarea } from "@/ui/textarea";
 import { faker } from "@faker-js/faker";
 import type { EventInput } from "@fullcalendar/core";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,6 +6,13 @@ import type { Dayjs } from "dayjs";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Icon } from "@/components/icon";
+import { Button } from "@/ui/button";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/ui/dialog";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/ui/form";
+import { Input } from "@/ui/input";
+import { Switch } from "@/ui/switch";
+import { Textarea } from "@/ui/textarea";
 
 export type CalendarEventFormFieldType = Pick<EventInput, "title" | "allDay" | "color"> & {
 	id: string;

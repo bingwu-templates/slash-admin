@@ -1,10 +1,11 @@
+import { faker } from "@faker-js/faker";
 import { ScrollProgress, useScrollProgress } from "@/components/animate/scroll-progress";
-import { themeVars } from "@/theme/theme.css";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
-import { faker } from "@faker-js/faker";
+import { themeVars } from "@/theme/theme.css";
 
 const TEXT = faker.lorem.paragraphs({ min: 20, max: 30 });
+const PARAGRAPH_IDS = [1, 2, 3, 4];
 export default function ScrollProgressView() {
 	const containerProgress = useScrollProgress("container");
 
@@ -26,9 +27,8 @@ export default function ScrollProgressView() {
 				<CardContent>
 					<ScrollProgress scrollYProgress={containerProgress.scrollYProgress} />
 					<div ref={containerProgress.elementRef} className="h-80 overflow-auto">
-						{[...Array(4)].map((_, index) => (
-							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-							<div key={index}>{TEXT}</div>
+						{PARAGRAPH_IDS.map((paragraphId) => (
+							<div key={paragraphId}>{TEXT}</div>
 						))}
 					</div>
 				</CardContent>

@@ -1,5 +1,4 @@
 import { useLayoutEffect } from "react";
-
 import { useRouter } from "@/routes/hooks";
 
 type Props = {

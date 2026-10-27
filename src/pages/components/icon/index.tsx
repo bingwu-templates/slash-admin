@@ -1,7 +1,7 @@
 import { Icon } from "@/components/icon";
-import { themeVars } from "@/theme/theme.css";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/ui/card";
+import { themeVars } from "@/theme/theme.css";
 
 export default function IconPage() {
 	return (

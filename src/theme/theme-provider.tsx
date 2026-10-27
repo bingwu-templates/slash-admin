@@ -1,6 +1,6 @@
-import { useSettings } from "@/store/settingStore";
 import { useEffect } from "react";
 import { HtmlDataAttribute } from "#/enum";
+import { useSettings } from "@/store/settingStore";
 import type { UILibraryAdapter } from "./type";
 interface ThemeProviderProps {
 	children: React.ReactNode;

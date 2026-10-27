@@ -21,19 +21,21 @@
 
 **English** | [中文](./README.zh-CN.md)
 
-##  Sponsor
+## Sponsor
+
 <div style="display: flex; gap: 50px"> 
   <img style="width:300px" src="https://d3george.github.io/github-static/pay/weixin.jpg" >
   <img style="width:300px" src="https://d3george.github.io/github-static/pay/buymeacoffee.png" />
 </div>
 
 ## Preview
-+ https://admin.slashspaces.com/
 
-|![login.png](https://d3george.github.io/github-static/slash-admin/sa-web-light.jpeg)|![login_dark.png](https://d3george.github.io/github-static/slash-admin/sa-web-dark.jpeg)
-| ----------------------------------------------------------------- | ------------------------------------------------------------------- |
-|![analysis.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-light.jpeg)|![workbench.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-dark.jpeg)
-| | 
+- https://admin.slashspaces.com/
+
+| ![login.png](https://d3george.github.io/github-static/slash-admin/sa-web-light.jpeg)       | ![login_dark.png](https://d3george.github.io/github-static/slash-admin/sa-web-dark.jpeg)   |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| ![analysis.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-light.jpeg) | ![workbench.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-dark.jpeg) |
+|                                                                                            |
 
 ## Features
 
@@ -53,7 +55,7 @@
 
 ## Quick Start
 
-Requires Node.js **22.12 or later** and pnpm **10.8.0**.
+Requires Node.js **22.18.0 or later** and pnpm **10.8.0**. TypeScript lint configuration requires native Node.js type stripping.
 
 ### Get the Project Code
 
@@ -87,9 +89,31 @@ Run the following command to build the production version:
 pnpm build
 ```
 
+## Code Quality
+
+Oxfmt and Oxlint use `oxfmt.config.ts` and `oxlint.config.ts`, with type inference from each package's `defineConfig`. Both configuration files are included in `pnpm typecheck`.
+
+| Command             | Purpose                                         |
+| ------------------- | ----------------------------------------------- |
+| `pnpm format`       | Format supported project files and sort imports |
+| `pnpm format:check` | Check formatting without writing files          |
+| `pnpm lint`         | Run the default Oxlint rules                    |
+| `pnpm lint:fix`     | Apply safe automatic lint fixes                 |
+| `pnpm typecheck`    | Run TypeScript without emitting files           |
+| `pnpm check`        | Run formatting, lint, and type checks in order  |
+
+Formatting uses tabs (width 2), 120 columns, double quotes, semicolons, and LF. Import sorting preserves side-effect imports and does not add blank lines between groups. `package.json` field sorting is disabled. Both tools respect `.gitignore` and exclude `public`, `.vscode`, and `src/ui`.
+
+Lefthook formats staged files, stages formatting fixes, then runs lint and type checks sequentially. Install the recommended **Oxc** VS Code extension (`oxc.oxc-vscode`) for formatting and safe lint fixes on save.
+
+### Check Coverage
+
+Oxlint uses its default rules and severities, with no additional plugins, type-aware rules, or individual rule overrides. Oxfmt formats CSS, JSON, and GraphQL without linting them. `pnpm typecheck` runs TypeScript type checks.
+
 ## Git Contribution submission specification
+
 - `feat` new features
-- `fix`  fix the
+- `fix` fix the
 - `docs` documentation or comments
 - `style` code format (changes that do not affect code execution)
 - `refactor` refactor

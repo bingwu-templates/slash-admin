@@ -1,5 +1,4 @@
 import { m } from "motion/react";
-import { repeat } from "ramda";
 import { useMemo } from "react";
 import Cover3 from "@/assets/images/cover/cover_3.jpg";
 import MotionContainer from "@/components/animate/motion-container";
@@ -7,6 +6,7 @@ import { getVariant } from "@/components/animate/variants";
 import { themeVars } from "@/theme/theme.css";
 
 const TEXT = "SlashAdmin";
+const IMAGES = Array.from({ length: 5 }, (_, index) => ({ id: `cover-${index}`, src: Cover3 }));
 type Props = {
 	isText: boolean;
 	isMulti: boolean;
@@ -14,7 +14,7 @@ type Props = {
 };
 export default function ContainerView({ isText, variant, isMulti }: Props) {
 	const varients = useMemo(() => getVariant(variant), [variant]);
-	const imgs = useMemo(() => (isMulti ? repeat(Cover3, 5) : [Cover3]), [isMulti]);
+	const imgs = useMemo(() => (isMulti ? IMAGES : IMAGES.slice(0, 1)), [isMulti]);
 
 	return (
 		<div
@@ -35,11 +35,10 @@ export default function ContainerView({ isText, variant, isMulti }: Props) {
 					key={isMulti ? "multi-image" : "single-image"}
 					className="flex flex-col items-center justify-center gap-6"
 				>
-					{imgs.map((img, index) => (
+					{imgs.map((img) => (
 						<m.img
-							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-							key={index}
-							src={img}
+							key={img.id}
+							src={img.src}
 							style={{
 								objectFit: "cover",
 								width: "240px",

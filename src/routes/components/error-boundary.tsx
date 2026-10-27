@@ -1,8 +1,8 @@
-import { themeVars } from "@/theme/theme.css";
-import { ScrollArea } from "@/ui/scroll-area";
-import { Title } from "@/ui/typography";
 import type { CSSProperties } from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router";
+import { ScrollArea } from "@/ui/scroll-area";
+import { Title } from "@/ui/typography";
+import { themeVars } from "@/theme/theme.css";
 
 export default function ErrorBoundary() {
 	const error = useRouteError();

@@ -1,5 +1,4 @@
 import "highlight.js/styles/base16/tomorrow-night.css";
-
 import hljs from "highlight.js";
 
 // ----------------------------------------------------------------------

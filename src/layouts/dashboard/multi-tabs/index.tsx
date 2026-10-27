@@ -1,7 +1,7 @@
-import { useRouter } from "@/routes/hooks";
 import { Tabs } from "antd";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
+import { useRouter } from "@/routes/hooks";
 import SortableContainer from "./components/sortable-container";
 import { SortableItem } from "./components/sortable-item";
 import { TabItem } from "./components/tab-item";
@@ -99,34 +99,34 @@ export default function MultiTabs() {
 }
 
 const StyledMultiTabs = styled.div`
-  height: 100%;
-  margin-top: 2px;
-  
-  .anticon {
-    margin: 0px !important;
-  }
-  
-  .ant-tabs {
-    height: 100%;
-    .ant-tabs-content {
-      height: 100%;
-    }
-    .ant-tabs-tabpane {
-      height: 100%;
-      & > div {
-        height: 100%;
-      }
-    }
-  }
+	height: 100%;
+	margin-top: 2px;
 
-  .hide-scrollbar {
-    overflow: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    will-change: transform;
- 
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
+	.anticon {
+		margin: 0px !important;
+	}
+
+	.ant-tabs {
+		height: 100%;
+		.ant-tabs-content {
+			height: 100%;
+		}
+		.ant-tabs-tabpane {
+			height: 100%;
+			& > div {
+				height: 100%;
+			}
+		}
+	}
+
+	.hide-scrollbar {
+		overflow: scroll;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		will-change: transform;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
 `;

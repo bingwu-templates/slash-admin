@@ -5,21 +5,18 @@ skip_output:
   - summary
 
 pre-commit:
-  parallel: true
+  parallel: false
   commands:
     format:
-      glob: "*.{js,jsx,ts,tsx,json,md}"
-      run: npx @biomejs/biome format --write --no-errors-on-unmatched {staged_files}
+      priority: 1
+      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,json5,css,scss,less,md,mdx,yml,yaml,html,graphql,gql,toml}"
+      run: pnpm exec oxfmt --write --no-error-on-unmatched-pattern {staged_files}
       stage_fixed: true
     lint:
-      glob: "*.{js,jsx,ts,tsx}"
-      run: npx @biomejs/biome lint --no-errors-on-unmatched {staged_files}
+      priority: 2
+      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}"
+      run: pnpm exec oxlint --no-error-on-unmatched-pattern {staged_files}
     check-types:
+      priority: 3
       glob: "*.{ts,tsx}"
-      run: npx tsc --noEmit
-
-commit-msg:
-  commands:
-    commitlint:
-      run: npx commitlint --edit {1}
-      skip: [merge, rebase]
+      run: pnpm typecheck

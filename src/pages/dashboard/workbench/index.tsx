@@ -1,3 +1,4 @@
+import { useState } from "react";
 import avatar1 from "@/assets/images/avatars/avatar-1.png";
 import avatar2 from "@/assets/images/avatars/avatar-2.png";
 import avatar3 from "@/assets/images/avatars/avatar-3.png";
@@ -12,7 +13,6 @@ import { Card, CardContent } from "@/ui/card";
 import { Progress } from "@/ui/progress";
 import { Text, Title } from "@/ui/typography";
 import { rgbAlpha } from "@/utils/theme";
-import { useState } from "react";
 import BannerCard from "./banner-card";
 
 const quickStats = [
@@ -119,47 +119,7 @@ export default function Workbench() {
 			{/* 顶部四个统计卡片 */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 				{quickStats.map((stat) => (
-					<Card key={stat.label} className="flex flex-col justify-between h-full">
-						<CardContent className="flex flex-col gap-2 p-4">
-							<div className="flex items-center gap-2">
-								<div className="rounded-lg p-2" style={{ background: rgbAlpha(stat.color, 0.1) }}>
-									<Icon icon={stat.icon} size={24} color={stat.color} />
-								</div>
-								<Text variant="body2" className="font-semibold">
-									{stat.label}
-								</Text>
-							</div>
-							<div className="flex items-center gap-2 mt-2">
-								<Title as="h3" className="text-2xl font-bold">
-									{stat.value}
-								</Title>
-								<span
-									className={`text-xs flex items-center gap-1 font-bold ${stat.percent > 0 ? "text-green-500" : stat.percent < 0 ? "text-red-500" : ""}`}
-								>
-									{stat.percent > 0 ? (
-										<Icon icon="mdi:arrow-up" size={16} />
-									) : stat.percent < 0 ? (
-										<Icon icon="mdi:arrow-down" size={16} />
-									) : null}
-									{stat.percent !== 0 ? `${Math.abs(stat.percent)}%` : stat.label === "Total Task" ? "New" : null}
-								</span>
-							</div>
-							<div className="w-full h-10 mt-2">
-								<Chart
-									type="bar"
-									height={40}
-									options={useChart({
-										chart: { sparkline: { enabled: true } },
-										colors: [stat.color],
-										grid: { show: false },
-										yaxis: { show: false },
-										tooltip: { enabled: false },
-									})}
-									series={[{ data: stat.chart }]}
-								/>
-							</div>
-						</CardContent>
-					</Card>
+					<QuickStatCard key={stat.label} stat={stat} />
 				))}
 			</div>
 
@@ -342,5 +302,47 @@ export default function Workbench() {
 				</Card>
 			</div>
 		</div>
+	);
+}
+
+function QuickStatCard({ stat }: { stat: (typeof quickStats)[number] }) {
+	const chartOptions = useChart({
+		chart: { sparkline: { enabled: true } },
+		colors: [stat.color],
+		grid: { show: false },
+		yaxis: { show: false },
+		tooltip: { enabled: false },
+	});
+	return (
+		<Card className="flex flex-col justify-between h-full">
+			<CardContent className="flex flex-col gap-2 p-4">
+				<div className="flex items-center gap-2">
+					<div className="rounded-lg p-2" style={{ background: rgbAlpha(stat.color, 0.1) }}>
+						<Icon icon={stat.icon} size={24} color={stat.color} />
+					</div>
+					<Text variant="body2" className="font-semibold">
+						{stat.label}
+					</Text>
+				</div>
+				<div className="flex items-center gap-2 mt-2">
+					<Title as="h3" className="text-2xl font-bold">
+						{stat.value}
+					</Title>
+					<span
+						className={`text-xs flex items-center gap-1 font-bold ${stat.percent > 0 ? "text-green-500" : stat.percent < 0 ? "text-red-500" : ""}`}
+					>
+						{stat.percent > 0 ? (
+							<Icon icon="mdi:arrow-up" size={16} />
+						) : stat.percent < 0 ? (
+							<Icon icon="mdi:arrow-down" size={16} />
+						) : null}
+						{stat.percent !== 0 ? `${Math.abs(stat.percent)}%` : stat.label === "Total Task" ? "New" : null}
+					</span>
+				</div>
+				<div className="w-full h-10 mt-2">
+					<Chart type="bar" height={40} options={chartOptions} series={[{ data: stat.chart }]} />
+				</div>
+			</CardContent>
+		</Card>
 	);
 }

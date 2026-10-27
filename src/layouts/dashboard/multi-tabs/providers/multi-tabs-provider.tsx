@@ -14,27 +14,20 @@ const MultiTabsContext = createContext<MultiTabsContextType>({
 	refreshTab: () => {},
 });
 
+const currentRouteMeta = {
+	key: "/",
+	label: "Home",
+	hideTab: false,
+	children: null,
+	outlet: null,
+	params: {},
+};
+
 export function MultiTabsProvider({ children }: { children: React.ReactNode }) {
 	const [tabs, setTabs] = useState<KeepAliveTab[]>([]);
-	const currentRouteMeta = {
-		key: "/",
-		label: "Home",
-		hideTab: false,
-		children: null,
-		outlet: null,
-		params: {},
-	};
-
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-	const activeTabRoutePath = useMemo(() => {
-		if (!currentRouteMeta) return "";
-		const { key } = currentRouteMeta;
-		return key;
-	}, [currentRouteMeta]);
+	const activeTabRoutePath = currentRouteMeta.key;
 
 	const operations = useTabOperations(tabs, setTabs, activeTabRoutePath);
-
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		if (!currentRouteMeta) return;
 
@@ -51,14 +44,14 @@ export function MultiTabsProvider({ children }: { children: React.ReactNode }) {
 						...currentRouteMeta,
 						key,
 						children,
-						timeStamp: new Date().getTime().toString(),
+						timeStamp: Date.now().toString(),
 					},
 				];
 			}
 
 			return filtered;
 		});
-	}, [currentRouteMeta]);
+	}, []);
 
 	const contextValue = useMemo(
 		() => ({

@@ -1,5 +1,4 @@
 import { type MotionProps, m } from "motion/react";
-
 import { varContainer } from "./variants";
 
 interface Props extends MotionProps {

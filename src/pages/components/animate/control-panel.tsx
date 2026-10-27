@@ -1,6 +1,6 @@
-import { themeVars } from "@/theme/theme.css";
 import { Card, CardContent } from "@/ui/card";
 import { ScrollArea } from "@/ui/scroll-area";
+import { themeVars } from "@/theme/theme.css";
 
 type Props = {
 	variantKey: {

@@ -1,7 +1,7 @@
-import { themeVars } from "@/theme/theme.css";
-import { rgbAlpha } from "@/utils/theme";
 import { globalStyle } from "@vanilla-extract/css";
 import { style } from "@vanilla-extract/css";
+import { rgbAlpha } from "@/utils/theme";
+import { themeVars } from "@/theme/theme.css";
 
 export const chartWrapper = style({}, "apexcharts-wrapper");
 

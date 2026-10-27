@@ -1,14 +1,14 @@
+import { AutoComplete, TreeSelect } from "antd";
+import { useCallback, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import type { Permission_Old } from "#/entity";
+import { BasicStatus, PermissionType } from "#/enum";
 // import { useUserPermission } from "@/store/userStore";
 import { Button } from "@/ui/button";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/ui/form";
 import { Input } from "@/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/ui/toggle-group";
-import { AutoComplete, TreeSelect } from "antd";
-import { useCallback, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import type { Permission_Old } from "#/entity";
-import { BasicStatus, PermissionType } from "#/enum";
 
 // Constants
 const ENTRY_PATH = "/src/pages";
@@ -20,6 +20,9 @@ const PAGE_SELECT_OPTIONS = Object.entries(PAGES).map(([path]) => {
 		value: pagePath,
 	};
 });
+
+// Placeholder until the user permission source is restored.
+const permissions: Permission_Old[] = [];
 
 export type PermissionModalProps = {
 	formValue: Permission_Old;
@@ -36,7 +39,6 @@ export default function PermissionModal({ title, show, formValue, onOk, onCancel
 
 	// TODO: fix
 	// const permissions = useUserPermission();
-	const permissions: any[] = [];
 	const [compOptions, setCompOptions] = useState(PAGE_SELECT_OPTIONS);
 
 	const getParentNameById = useCallback((parentId: string, data: Permission_Old[] | undefined = permissions) => {
@@ -188,7 +190,9 @@ export default function PermissionModal({ title, show, formValue, onOk, onCancel
 										<FormControl>
 											<AutoComplete
 												options={compOptions}
-												filterOption={(input, option) => ((option?.label || "") as string).toLowerCase().includes(input.toLowerCase())}
+												filterOption={(input, option) =>
+													((option?.label || "") as string).toLowerCase().includes(input.toLowerCase())
+												}
 												value={field.value || ""}
 												onChange={(value) => field.onChange(value || null)}
 											/>

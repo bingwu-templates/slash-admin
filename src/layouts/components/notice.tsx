@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+import { type CSSProperties, useState } from "react";
 import CyanBlur from "@/assets/images/background/cyan-blur.png";
 import RedBlur from "@/assets/images/background/red-blur.png";
 import { AvatarGroup } from "@/components/avatar-group";
@@ -10,8 +12,6 @@ import { ScrollArea } from "@/ui/scroll-area";
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle } from "@/ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
 import { Text } from "@/ui/typography";
-import { faker } from "@faker-js/faker";
-import { type CSSProperties, useState } from "react";
 
 export default function NoticeButton() {
 	const [drawerOpen, setDrawerOpen] = useState(false);
@@ -421,8 +421,8 @@ function NoticeTab() {
 									</div>
 								</div>
 								<AvatarGroup max={{ count: 4 }} size="small">
-									{Array.from({ length: notification.attendees }).map((_, i) => (
-										<Avatar key={`attendee-${notification.id}-${i}`}>
+									{Array.from({ length: notification.attendees }, (_, slot) => slot + 1).map((slot) => (
+										<Avatar key={`attendee-${notification.id}-${slot}`}>
 											<AvatarImage src={faker.image.avatarGitHub()} />
 										</Avatar>
 									))}
@@ -514,9 +514,9 @@ function NoticeTab() {
 									</div>
 								</div>
 								<div className="flex -space-x-2">
-									{Array.from({ length: notification.assignees }).map((_, i) => (
+									{Array.from({ length: notification.assignees }, (_, slot) => slot + 1).map((slot) => (
 										<div
-											key={`attendee-${notification.id}-${i}`}
+											key={`assignee-${notification.id}-${slot}`}
 											className="w-6 h-6 rounded-full bg-bg-neutral border-2"
 										/>
 									))}

@@ -1,10 +1,10 @@
-import { useSettingActions, useSettings } from "@/store/settingStore";
 import type { ThemeMode } from "#/enum";
-import { themeVars } from "../theme.css";
+import { useSettingActions, useSettings } from "@/store/settingStore";
 import { baseThemeTokens } from "../tokens/base";
 import { darkColorTokens, lightColorTokens, presetsColors } from "../tokens/color";
 import { darkShadowTokens, lightShadowTokens } from "../tokens/shadow";
 import { typographyTokens } from "../tokens/typography";
+import { themeVars } from "../theme.css";
 
 export function useTheme() {
 	const settings = useSettings();
