@@ -58,7 +58,7 @@ export default function UserPage() {
 			align: "center",
 			width: 100,
 			render: (_, record) => (
-				<div className="flex w-full justify-center text-gray-500">
+				<div className="flex w-full justify-center text-text-secondary">
 					<Button
 						variant="ghost"
 						size="icon"

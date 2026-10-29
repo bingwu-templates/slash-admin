@@ -54,7 +54,7 @@ export default function Toast() {
 						</div>
 					),
 					loading: (
-						<div className="p-2 bg-gray-400/10 text-gray-400 rounded-lg">
+						<div className="p-2 bg-bg-neutral text-text-secondary rounded-lg">
 							<Icon icon="svg-spinners:6-dots-scale-middle" size={24} speed={3} />
 						</div>
 					),
@@ -136,7 +136,7 @@ const ToasterStyleWrapper = styled.div`
 			border-width: 1px;
 			border-style: dashed;
 			background-color: ${themeVars.colors.background.paper};
-			border: 1px solid ${rgbAlpha(themeVars.colors.palette.gray[200], 0.2)};
+			border: 1px solid ${rgbAlpha(themeVars.colors.palette.gray["200Channel"], 0.2)};
 		}
 	}
 `;

@@ -114,7 +114,7 @@ export default function TaskDetail({ task }: Props) {
 						<Avatar>
 							<AvatarImage src={avatar} alt="@shadcn" />
 						</Avatar>
-						<div className="flex grow flex-col flex-wrap gap-1 text-gray">
+						<div className="flex grow flex-col flex-wrap gap-1 text-text-secondary">
 							<div className="flex justify-between">
 								<Text variant="caption" color="secondary">
 									{username}

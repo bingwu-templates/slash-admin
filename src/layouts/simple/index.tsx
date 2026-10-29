@@ -6,7 +6,7 @@ type Props = {
 };
 export default function SimpleLayout({ children }: Props) {
 	return (
-		<div className="flex h-screen w-full flex-col text-text-base bg-bg">
+		<div className="flex h-screen w-full flex-col text-text-primary bg-bg">
 			<HeaderSimple />
 			{children}
 		</div>

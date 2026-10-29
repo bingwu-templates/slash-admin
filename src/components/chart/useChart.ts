@@ -142,7 +142,7 @@ const baseCharOptions = (themeMode: ThemeMode, themeColorPresets: ThemeColorPres
 				track: {
 					margin: -8,
 					strokeWidth: "50%",
-					background: rgbAlpha(themeVars.colors.palette.gray[500], 0.5),
+					background: rgbAlpha(themeVars.colors.palette.gray["500Channel"], 0.5),
 				},
 				dataLabels: {
 					value: { ...LABEL_VALUE },

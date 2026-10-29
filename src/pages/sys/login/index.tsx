@@ -41,7 +41,7 @@ function LoginPage() {
 				</div>
 			</div>
 
-			<div className="relative hidden bg-background-paper lg:block">
+			<div className="relative hidden bg-bg-paper lg:block">
 				<img
 					src={PlaceholderImg}
 					alt="placeholder img"

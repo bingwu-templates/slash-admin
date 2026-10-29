@@ -17,7 +17,7 @@ export default function UploadPage() {
 	const boxPlaceHolder = (
 		<div className="flex flex-col">
 			<Icon icon="eva:cloud-upload-fill" size={40} />
-			<span className="text-sm text-gray-500">Upload File</span>
+			<span className="text-sm text-text-secondary">Upload File</span>
 		</div>
 	);
 	const UploadFileTab = (

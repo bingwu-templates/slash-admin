@@ -27,7 +27,7 @@ export function Upload({ thumbnail = false, ...other }: Props) {
 					</p>
 					<div>
 						<h5 className="mt-4">Drop or Select file</h5>
-						<p className="text-sm text-gray-500">
+						<p className="text-sm text-text-secondary">
 							Drop files here or click
 							<span className="mx-2 text-primary underline">browse</span>
 							thorough your machine

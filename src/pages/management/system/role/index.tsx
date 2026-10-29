@@ -61,7 +61,7 @@ export default function RolePage() {
 			align: "center",
 			width: 100,
 			render: (_, record) => (
-				<div className="flex w-full justify-center text-gray">
+				<div className="flex w-full justify-center text-text-secondary">
 					<Button variant="ghost" size="icon" onClick={() => onEdit(record)}>
 						<Icon icon="solar:pen-bold-duotone" size={18} />
 					</Button>

@@ -89,7 +89,7 @@ export default function KanbanColumn({
 				{renamingColumn ? <Input ref={renameColumnInputRef} autoFocus /> : column.title}
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
-						<Button variant="ghost" size="icon" className="text-gray!">
+						<Button variant="ghost" size="icon" className="text-text-secondary">
 							<Icon icon="dashicons:ellipsis" />
 						</Button>
 					</DropdownMenuTrigger>

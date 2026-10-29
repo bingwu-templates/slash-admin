@@ -16,7 +16,7 @@ export default function ToastPage() {
 	};
 	return (
 		<div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-			<Card title="Simple" className="flex-none text- lg:flex-1 bg-">
+			<Card title="Simple" className="flex-none lg:flex-1">
 				<CardHeader>
 					<CardTitle>Simple</CardTitle>
 				</CardHeader>

@@ -576,7 +576,7 @@ function NoticeTab() {
 					{/* Profile Action */}
 					{notification.hasProfileAction && (
 						<div className="mt-3 flex items-center space-x-2">
-							<div className="flex items-center space-x-2 text-sm text-gray-600">
+							<div className="flex items-center space-x-2 text-sm text-text-secondary">
 								<Icon icon="solar:check-circle-bold" size={16} className="text-green-600" />
 								<span>Connected</span>
 							</div>

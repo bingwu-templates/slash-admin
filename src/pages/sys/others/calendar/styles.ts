@@ -118,7 +118,7 @@ export const StyledCalendar = styled.div<{ $themeMode: ThemeMode }>`
 			}
 
 			.fc-list-event-time {
-				color: ${themeVars.colors.palette.gray["500Channel"]};
+				color: ${themeVars.colors.text.secondary};
 			}
 			.fc-event-title {
 				color: ${themeVars.colors.text.primary};

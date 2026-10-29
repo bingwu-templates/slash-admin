@@ -40,7 +40,7 @@ function KanbanTask({ id, task, isDragging }: Props) {
 						</div>
 						<div>{title}</div>
 						<div className="mt-4 flex items-center justify-between">
-							<div className="flex items-center text-base text-gray-600">
+							<div className="flex items-center text-base text-text-secondary">
 								<Icon icon="uim:comment-dots" size={16} className="mr-1" />
 								<span className="text-xs">{comments.length}</span>
 
@@ -78,7 +78,7 @@ function KanbanTask({ id, task, isDragging }: Props) {
 									</SelectContent>
 								</Select>
 							</div>
-							<div className="flex text-gray">
+							<div className="flex text-text-secondary">
 								<Button variant="ghost" size="icon">
 									<Icon icon="solar:like-bold" size={20} className="text-success!" />
 								</Button>

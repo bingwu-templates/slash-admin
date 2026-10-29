@@ -3,7 +3,6 @@ import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig, loadEnv } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), "");
@@ -12,13 +11,15 @@ export default defineConfig(({ mode }) => {
 
 	return {
 		base,
+		resolve: {
+			tsconfigPaths: true,
+		},
 		plugins: [
 			react(),
 			vanillaExtractPlugin({
 				identifiers: ({ debugId }) => `${debugId}`,
 			}),
 			tailwindcss(),
-			tsconfigPaths(),
 
 			isProduction &&
 				visualizer({

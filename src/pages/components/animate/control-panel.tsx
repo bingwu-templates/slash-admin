@@ -26,7 +26,7 @@ export default function ControlPanel({ variantKey, selectedVariant, onChangeVari
 					{variantKey.map((item) => (
 						<div key={item.type}>
 							<div className="text-xs font-medium">{item.type.toUpperCase()}</div>
-							<ul className="mb-4 ml-2 mt-2 text-gray-600">
+							<ul className="mb-4 ml-2 mt-2 text-text-secondary">
 								{item.values.map((item) => (
 									<li
 										key={item}
